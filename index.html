@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saidoxx — Cybersécurité & DevSecOps · Abidjan</title>
+  <meta name="description" content="Portfolio de Sangare Said — Cybersécurité, SOC, Pentest, Réseaux, Cloud et DevSecOps. Abidjan, Côte d'Ivoire." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="desktop">
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+  <!-- ═══ MAIN WINDOW ═══ -->
+  <div class="app-window" id="appWindow">
+
+    <!-- Title Bar -->
+    <div class="title-bar glass-bar">
+      <div class="traffic-lights">
+        <span class="tl tl-red" title="Fermer"></span>
+        <span class="tl tl-yellow" title="Réduire"></span>
+        <span class="tl tl-green" title="Plein écran"></span>
+      </div>
+      <div class="window-title">
+        <span class="mono" id="winPath">~/saidoxx/portfolio</span>
+      </div>
+      <div class="title-actions">
+        <button class="pill-btn" onclick="App.openModal('cv')">CV</button>
+        <button class="pill-btn accent-pill" onclick="App.openModal('certs')">Certifications</button>
+        <div class="avail-badge">
+          <span class="avail-dot"></span>
+          <span>Disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="window-body">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar glass-sidebar">
+        <div class="sidebar-profile">
+          <div class="avatar pulse-avatar">SS</div>
+          <div class="avatar-info">
+            <strong>Saidoxx</strong>
+            <span>Abidjan · CI</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span><span>Accueil</span></button>
+          <button class="nav-item" data-page="about"><span class="nav-icon">◎</span><span>À propos</span></button>
+          <button class="nav-item" data-page="skills"><span class="nav-icon">◈</span><span>Compétences</span></button>
+          <button class="nav-item" data-page="projects"><span class="nav-icon">◆</span><span>Projets</span></button>
+          <button class="nav-item" data-page="contact"><span class="nav-icon">@</span><span>Contact</span></button>
+        </nav>
+        <div class="sidebar-stats glass-stats">
+          <div class="stat-item"><span class="stat-num">5+</span><span class="stat-lbl">Certifs</span></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><span class="stat-num">6+</span><span class="stat-lbl">Projets</span></div>
+          <div class="stat-div"></div>
+          <div class="stat-item"><span class="stat-num">1+</span><span class="stat-lbl">Année d'exp.</span></div>
+        </div>
+        <div class="sidebar-footer">
+          <a href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="social-dot" title="GitHub">GH</a>
+          <a href="https://www.linkedin.com/in/said-sangare-965a55365" target="_blank" rel="noopener noreferrer" class="social-dot" title="LinkedIn">LI</a>
+          <a href="https://www.tiktok.com/@saidoxx0" target="_blank" rel="noopener noreferrer" class="social-dot" title="TikTok">TK</a>
+        </div>
+      </aside>
+
+      <!-- PAGES -->
+      <div class="pages-wrap">
+
+        <!-- ══ HOME ══ -->
+        <section class="page active" id="page-home">
+          <div class="hero">
+            <div class="hero-content">
+              <div class="hero-badge glass-badge">
+                <span class="badge-pulse"></span>
+                Cybersécurité &amp; DevSecOps · Abidjan, CI
+              </div>
+              <h1 class="hero-name">
+                Sangare <span class="accent-text">Said</span><span class="name-dot">.</span>
+              </h1>
+              <div class="hero-type-row">
+                <span class="mono term-p-inline">$</span>
+                <span id="typeText" class="mono type-text"></span>
+                <span class="cursor">|</span>
+              </div>
+              <p class="hero-desc">
+                <strong>Cybersécurité, SOC, Cloud et DevSecOps</strong>. Conception et sécurisation d’environnements avec un focus sur la <strong>détection des menaces, l’analyse des incidents, le pentest et la réponse à incident</strong>, complétés par <strong>l’automatisation et le déploiement d’infrastructures avec Terraform, Vagrant et Ansible</strong>.
+              </p>
+              <div class="hero-langs">
+                <span>Français</span><span class="lang-sep">·</span>
+                <span>English</span>
+              </div>
+              <div class="hero-tags">
+                <span class="tag">#SOC</span>
+                <span class="tag">#Pentest</span>
+                <span class="tag">#Réseaux</span>
+                <span class="tag">#Cloud</span>
+                <span class="tag">#DevSecOps</span>
+              </div>
+              <div class="hero-ctas">
+                <button class="btn-primary" onclick="App.goTo('projects')">
+                  Voir mes projets
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn-ghost" onclick="App.goTo('contact')">Me contacter</button>
+                <a class="btn-ghost" href="CV SAID SANGARE.pdf" download>Télécharger CV</a>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="hero-term glass-dark">
+                <div class="term-topbar">
+                  <span class="tl tl-red sm"></span>
+                  <span class="tl tl-yellow sm"></span>
+                  <span class="tl tl-green sm"></span>
+                  <span class="mono term-lbl">bash — nmap scan</span>
+                </div>
+                <div class="term-content">
+                  <div class="tline"><span class="tp">$</span> <span class="tc">nmap -sV -A 192.168.56.10</span></div>
+                  <div class="tline tmuted td1">Starting Nmap (nmap.org)</div>
+                  <div class="tline tmuted td2">Scanning target [1000 ports]</div>
+                  <div class="tline tok td3">22/tcp  open  ssh      OpenSSH 9.0</div>
+                  <div class="tline tok td4">80/tcp  open  http     nginx/1.24</div>
+                  <div class="tline tok td5">443/tcp open  https    TLSv1.3</div>
+                  <div class="tline twarn td6">8080/tcp filtered — WAF detected</div>
+                  <div class="tline tmuted td7">OS fingerprint: Linux 5.15</div>
+                  <br/>
+                  <div class="tline td8"><span class="tp">$</span> <span class="tc">cat profile.txt</span></div>
+                  <div class="tline taccent td9">SOC · Pentest · Cloud · DevSecOps</div>
+                </div>
+              </div>
+              <!-- Floating glass cards -->
+              <div class="float-card glass-float fc-top">
+                <span class="fc-num">5+</span>
+                <span class="fc-lbl">Certifications</span>
+              </div>
+              <div class="float-card glass-float fc-bot">
+                <span class="fc-num">1+</span>
+                <span class="fc-lbl">Année d'expérience</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ ABOUT ══ -->
+        <section class="page" id="page-about">
+          <div class="page-inner">
+            <div class="sec-label">À PROPOS</div>
+            <h2 class="page-title">Profil <span class="accent-text">professionnel</span></h2>
+            <div class="about-layout">
+              <div class="about-left">
+                <div class="about-av-wrap">
+                  <div class="about-av glass-dark-card">SS</div>
+                  <div class="av-ring"></div>
+                </div>
+                <div class="about-quick glass-card">
+                  <div class="aq"><span>◎</span><span>Abidjan, Côte d'Ivoire</span></div>
+                  <div class="aq"><span>◈</span><span>Cybersécurité &amp; Infrastructure</span></div>
+                  <div class="aq"><span>▶</span><span>Saidoxx · TikTok</span></div>
+                  <div class="aq aq-email">
+                    <span>@</span>
+                    <span>saidsangare10@gmail.com</span>
+                    <button class="copy-btn" onclick="App.copyEmail(this)">Copier</button>
+                  </div>
+                </div>
+              </div>
+              <div class="about-right">
+                <p class="bio">Je suis <strong>Sangare Said</strong>, professionnel de la cybersécurité basé à Abidjan. Mon travail porte sur la sécurité des systèmes, les opérations SOC, les tests d'intrusion et les infrastructures, avec une orientation Cloud et DevSecOps.</p>
+                <p class="bio">Certifié CompTIA Security+, CompTIA Server+, Cisco CCNA et EC-Council CSA, j'interviens sur la détection et la réponse aux incidents, l'administration de systèmes Linux et Windows, la sécurité des réseaux et l'automatisation d'infrastructures.</p>
+                <p class="bio">Mon expérience pratique s'appuie sur des projets techniques menés de bout en bout : déploiement d'un SOC avec Wazuh, réponse automatisée aux incidents, infrastructure AWS provisionnée avec Terraform, environnements virtualisés sous VMware.</p>
+
+                <h4 class="about-sub">Certifications</h4>
+                <div class="tlc">
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>CompTIA Security+ &amp; Server+</strong> — Sécurité des systèmes, administration serveur et infrastructure</div></div>
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>Cisco CCNA</strong> — Réseaux, commutation, routage et automatisation</div></div>
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>EC-Council CSA</strong> — Certified SOC Analyst : détection, analyse et réponse aux incidents</div></div>
+                </div>
+
+                <h4 class="about-sub">Expérience</h4>
+                <div class="tlc">
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>Analyste SOC</strong> — Surveillance et détection des menaces avec Wazuh (SIEM/XDR), corrélation d'événements, analyse d'incidents et alignement sur MITRE ATT&amp;CK</div></div>
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>Cybersécurité / Sécurité des systèmes</strong> — Évaluation de vulnérabilités, tests d'intrusion (Nmap, Burp Suite, Metasploit) et durcissement de systèmes</div></div>
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>Administration systèmes et réseaux</strong> — Linux, Windows Server et Active Directory, virtualisation VMware, réseaux Cisco (VLAN, routage, VPN) et automatisation avec Ansible</div></div>
+                  <div class="tlc-item"><span class="tlc-dot"></span><div><strong>Création et partage de contenu technique en cybersécurité</strong> — Saidoxx sur TikTok</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ SKILLS ══ -->
+        <section class="page" id="page-skills">
+          <div class="page-inner">
+            <div class="sec-label">COMPÉTENCES</div>
+            <h2 class="page-title">Compétences <span class="accent-text">techniques</span></h2>
+            <p class="page-sub">Domaines techniques et outils utilisés</p>
+
+            <div class="skills-clean-grid">
+              <div class="skill-category glass-card">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">◈</span>
+                  <h3>Cybersécurité</h3>
+                </div>
+                <p class="cat-desc">Détection, analyse et réponse aux incidents, évaluation de vulnérabilités et tests d'intrusion.</p>
+                <div class="tech-badges">
+                  <span class="tb">SOC</span>
+                  <span class="tb">Security Operations</span>
+                  <span class="tb">SIEM</span>
+                  <span class="tb">Threat Detection</span>
+                  <span class="tb">Incident Response</span>
+                  <span class="tb">Vulnerability Assessment</span>
+                  <span class="tb">Pentesting</span>
+                  <span class="tb">Ethical Hacking</span>
+                  <span class="tb">Network Security</span>
+                  <span class="tb">System Security</span>
+                </div>
+              </div>
+              <div class="skill-category glass-card">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">▣</span>
+                  <h3>Systèmes &amp; Infrastructure</h3>
+                </div>
+                <p class="cat-desc">Administration et durcissement de systèmes Linux et Windows Server, annuaire et virtualisation.</p>
+                <div class="tech-badges">
+                  <span class="tb">Linux</span>
+                  <span class="tb">Windows Server</span>
+                  <span class="tb">Active Directory</span>
+                  <span class="tb">VMware</span>
+                  <span class="tb">SysAdmin</span>
+                  <span class="tb">Infrastructure</span>
+                </div>
+              </div>
+              <div class="skill-category glass-card">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">◎</span>
+                  <h3>Réseaux</h3>
+                </div>
+                <p class="cat-desc">Conception, segmentation et sécurisation de réseaux d'entreprise.</p>
+                <div class="tech-badges">
+                  <span class="tb">TCP/IP</span>
+                  <span class="tb">Routing &amp; Switching</span>
+                  <span class="tb">VLAN</span>
+                  <span class="tb">VPN</span>
+                  <span class="tb">Network Security</span>
+                  <span class="tb">Cisco</span>
+                </div>
+              </div>
+              <div class="skill-category glass-card">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">◇</span>
+                  <h3>Cloud</h3>
+                </div>
+                <p class="cat-desc">Conception et sécurisation d'infrastructures cloud.</p>
+                <div class="tech-badges">
+                  <span class="tb">AWS</span>
+                  <span class="tb">Azure</span>
+                  <span class="tb">Cloud Security</span>
+                  <span class="tb">Cloud Infrastructure</span>
+                </div>
+              </div>
+              <div class="skill-category glass-card">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">◆</span>
+                  <h3>DevSecOps &amp; Automatisation</h3>
+                </div>
+                <p class="cat-desc">Provisionnement reproductible, gestion de configuration et automatisation de la sécurité.</p>
+                <div class="tech-badges">
+                  <span class="tb">DevSecOps</span>
+                  <span class="tb">Infrastructure as Code (IaC)</span>
+                  <span class="tb">Terraform</span>
+                  <span class="tb">Vagrant</span>
+                  <span class="tb">Ansible</span>
+                  <span class="tb">Automation</span>
+                </div>
+              </div>
+              <div class="skill-category glass-card">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">›_</span>
+                  <h3>Programmation / scripting</h3>
+                </div>
+                <p class="cat-desc">Scripts d'automatisation, d'administration et d'analyse.</p>
+                <div class="tech-badges">
+                  <span class="tb">Python</span>
+                  <span class="tb">Ruby</span>
+                  <span class="tb">Bash</span>
+                  <span class="tb">PowerShell</span>
+                </div>
+              </div>
+              <div class="skill-category glass-card wide">
+                <div class="cat-header">
+                  <span class="cat-icon" aria-hidden="true">▤</span>
+                  <h3>Outils de cybersécurité</h3>
+                </div>
+                <p class="cat-desc">Supervision, analyse réseau, tests d'intrusion et exploitation.</p>
+                <div class="tech-badges">
+                  <span class="tb">Wazuh</span>
+                  <span class="tb">Sysmon</span>
+                  <span class="tb">Wireshark</span>
+                  <span class="tb">Nmap</span>
+                  <span class="tb">Metasploit</span>
+                  <span class="tb">Burp Suite</span>
+                  <span class="tb">Kali Linux</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ PROJECTS ══ -->
+        <section class="page" id="page-projects">
+          <div class="page-inner">
+            <div class="sec-label">RÉALISATIONS</div>
+            <h2 class="page-title">Projets <span class="accent-text">clés</span></h2>
+            <p class="page-sub">Cliquez sur une carte pour afficher le dossier technique complet</p>
+            <div class="projects-grid">
+
+              <article class="proj-card glass-proj" data-pid="devsecops" tabindex="0" role="button">
+                <div class="proj-prev devsecops-bg">
+                  <div class="prev-term">
+                    <div class="pt-line"><span style="color:#60A5FA">$ vagrant up</span></div>
+                    <div class="pt-line" style="color:#34D399">► PLAY RECAP : failed=0</div>
+                    <div class="pt-line" style="color:#94A3B8">Wazuh : agents connectés</div>
+                    <div class="pt-line" style="color:#94A3B8">Active Response : actif</div>
+                  </div>
+                </div>
+                <div class="proj-body">
+                  <div class="proj-top-row">
+                    <span class="pbadge">DevSecOps &amp; SOC</span>
+                    <a href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="gh-icon with-label" onclick="event.stopPropagation()" title="Voir sur GitHub">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                      <span>Voir sur GitHub</span>
+                    </a>
+                  </div>
+                  <h3 class="pname">Automatisation DevSecOps : Déploiement d'un SOC Hybride et Réponse Automatisée aux Incidents avec Vagrant, Ansible et Wazuh</h3>
+                  <p class="pdesc">Environnement de cybersécurité de type entreprise combinant Infrastructure as Code, gestion de configuration, surveillance SOC et réponse automatisée aux incidents.</p>
+                  <div class="ptags"><span>Vagrant</span><span>Ansible</span><span>Wazuh</span><span>VMware</span><span>IPTables</span></div>
+                  <div class="pcta">Détails techniques <span class="pcta-arrow">→</span></div>
+                </div>
+              </article>
+
+              <article class="proj-card glass-proj" data-pid="cloud" tabindex="0" role="button">
+                <div class="proj-prev aws-bg">
+                  <div class="prev-term">
+                    <div class="pt-line"><span style="color:#60A5FA">$ terraform apply</span></div>
+                    <div class="pt-line" style="color:#94A3B8">DMZ · Serveurs · Postes</div>
+                    <div class="pt-line" style="color:#94A3B8">Route 53 · IAM · SSM</div>
+                    <div class="pt-line" style="color:#34D399">► Apply complete!</div>
+                  </div>
+                </div>
+                <div class="proj-body">
+                  <div class="proj-top-row">
+                    <span class="pbadge">Cloud &amp; IaC</span>
+                    <a href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="gh-icon with-label" onclick="event.stopPropagation()" title="Voir sur GitHub">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                      <span>Voir sur GitHub</span>
+                    </a>
+                  </div>
+                  <h3 class="pname">Infrastructure Cloud d'Entreprise : Segmentation Réseau Sécurisée, Hybridation Linux/Windows et Déploiement 100 % IaC avec Terraform sur AWS</h3>
+                  <p class="pdesc">Infrastructure cloud d'entreprise sur AWS : architecture réseau segmentée, environnements Linux et Windows, déploiement entièrement automatisé avec Terraform.</p>
+                  <div class="ptags"><span>Terraform</span><span>AWS</span><span>IAM</span><span>Route 53</span><span>Active Directory</span></div>
+                  <div class="pcta">Détails techniques <span class="pcta-arrow">→</span></div>
+                </div>
+              </article>
+
+              <article class="proj-card glass-proj" data-pid="soc" tabindex="0" role="button">
+                <div class="proj-prev soc-bg">
+                  <div class="prev-soc">
+                    <div class="soc-row"><span class="soc-dot"></span>ALERT: Brute force SSH</div>
+                    <div class="soc-row"><span class="soc-dot"></span>WARN: Port scan 192.168.1.0/24</div>
+                    <div class="soc-row"><span class="soc-dot green"></span>OK: Incident contained</div>
+                  </div>
+                </div>
+                <div class="proj-body">
+                  <div class="proj-top-row">
+                    <span class="pbadge">SOC &amp; SIEM</span>
+                    <a href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="gh-icon with-label" onclick="event.stopPropagation()" title="Voir sur GitHub">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                      <span>Voir sur GitHub</span>
+                    </a>
+                  </div>
+                  <h3 class="pname">SOC + Zero Trust — Wazuh</h3>
+                  <p class="pdesc">Architecture SOC complète avec SIEM Wazuh et Zero Trust Network Access.</p>
+                  <div class="ptags"><span>Wazuh</span><span>SIEM</span><span>Zero Trust</span><span>SOC</span></div>
+                  <div class="pcta">Détails techniques <span class="pcta-arrow">→</span></div>
+                </div>
+              </article>
+
+              <!-- Carte : plus de projets sur GitHub -->
+              <article class="proj-card proj-cta">
+                <div class="cta-inner">
+                  <div class="cta-icon-big"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
+                  <h3>Vous souhaitez découvrir davantage de projets ?</h3>
+                  <p>Retrouvez mes autres expérimentations, projets techniques et travaux pratiques sur GitHub.</p>
+                  <a class="btn-primary" href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" style="margin-top:12px;font-size:13px;padding:8px 18px">Voir tous mes projets</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ CONTACT ══ -->
+        <section class="page" id="page-contact">
+          <div class="page-inner">
+            <div class="sec-label">CONTACT</div>
+            <h2 class="page-title">Travaillons <span class="accent-text">ensemble</span></h2>
+            <p class="page-sub">Missions techniques · Sécurité des systèmes · Infrastructure &amp; Cloud</p>
+            <div class="contact-grid">
+              <div class="glass-card contact-form-card">
+                <h3>Envoyer un message</h3>
+                <form id="contactForm" action="https://formspree.io/f/xdklwaol" method="POST" novalidate>
+                  <div class="fg"><label for="cf-name">Nom complet</label><input id="cf-name" type="text" name="name" placeholder="Votre nom" autocomplete="name" required /></div>
+                  <div class="fg"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" placeholder="votre@email.com" autocomplete="email" required /></div>
+                  <div class="fg"><label for="cf-subject">Sujet</label><input id="cf-subject" type="text" name="_subject" placeholder="Objet de votre demande" /></div>
+                  <div class="fg"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" placeholder="Votre message..." required minlength="10"></textarea></div>
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+                  <button type="submit" class="btn-primary full" id="submitBtn">
+                    <span id="submitText">Transmettre le message</span>
+                    <span id="submitLoader" style="display:none">Envoi en cours...</span>
+                  </button>
+                  <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+                </form>
+              </div>
+              <div class="contact-side">
+                <div class="glass-card contact-info-card">
+                  <h3>Coordonnées</h3>
+                  <div class="info-list">
+                    <a href="tel:+2250713530812" class="info-item"><span class="ii" aria-hidden="true">T</span><div><strong>Téléphone</strong><span>+225 07 13 53 08 12</span></div></a>
+                    <a href="mailto:saidsangare10@gmail.com" class="info-item"><span class="ii" aria-hidden="true">@</span><div><strong>Email</strong><span>saidsangare10@gmail.com</span></div></a>
+                    <div class="info-item"><span class="ii" aria-hidden="true">◎</span><div><strong>Localisation</strong><span>Abidjan, Côte d'Ivoire</span></div></div>
+                  </div>
+                </div>
+                <div class="glass-card social-card">
+                  <h3>Réseaux</h3>
+                  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/said-sangare-965a55365" target="_blank" rel="noopener noreferrer" class="social-link sl-li"><span class="si">in</span><div><strong>LinkedIn</strong><small>Profil professionnel</small></div></a>
+                    <a href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="social-link sl-gh"><span class="si">⌥</span><div><strong>GitHub</strong><small>Projets &amp; travaux techniques</small></div></a>
+                    <a href="https://www.tiktok.com/@saidoxx0" target="_blank" rel="noopener noreferrer" class="social-link sl-tk"><span class="si">▶</span><div><strong>Saidoxx</strong><small>Contenu technique en cybersécurité</small></div></a>
+                  </div>
+                  <div class="ethics-note"><strong>Engagement éthique</strong> — Les activités offensives sont menées exclusivement dans un cadre autorisé et contrôlé.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /pages-wrap -->
+    </div><!-- /window-body -->
+  </div><!-- /app-window -->
+</div><!-- /desktop -->
+
+<!-- ═══ MODALS ═══ -->
+<div class="modal-overlay" id="modalOverlay">
+
+  <!-- CV -->
+  <div class="modal-win glass-modal" id="modal-cv">
+    <div class="modal-bar glass-bar">
+      <div class="traffic-lights"><span class="tl tl-red" onclick="App.closeModal()"></span><span class="tl tl-yellow"></span><span class="tl tl-green"></span></div>
+      <span class="mono" style="font-size:13px;color:var(--muted)">CV — SANGARE SAID</span>
+      <a href="CV SAID SANGARE.pdf" download class="pill-btn small" style="margin-left:auto">Télécharger PDF</a>
+    </div>
+    <div class="modal-body">
+      <div class="cv-wrap">
+        <div class="cv-head">
+          <div class="cv-av">SS</div>
+          <div>
+            <h1 style="font-size:22px;font-weight:700;margin-bottom:4px">SANGARE Said</h1>
+            <p class="mono accent-text" style="font-size:13px">SOC · Pentest · Réseaux · Cloud · DevSecOps</p>
+            <div class="cv-contacts">
+              <span>+225 07 13 53 08 12</span>
+              <span>saidsangare10@gmail.com</span>
+              <span>Abidjan, CI</span>
+            </div>
+          </div>
+        </div>
+        <div class="cv-body-grid">
+          <div class="cv-sec">
+            <h4>Expérience</h4>
+            <div class="cv-it"><strong>Analyste SOC</strong></div>
+            <div class="cv-it"><strong>Cybersécurité / Sécurité des systèmes</strong></div>
+            <div class="cv-it"><strong>Administration systèmes et réseaux</strong></div>
+          </div>
+          <div class="cv-sec">
+            <h4>Certifications</h4>
+            <div class="cv-it"><strong>EC-Council CSA</strong><p>Certified SOC Analyst</p></div>
+            <div class="cv-it"><strong>CompTIA Security+</strong> — International</div>
+            <div class="cv-it"><strong>CompTIA Server+</strong> — International</div>
+            <div class="cv-it"><strong>Cisco CCNA</strong></div>
+          </div>
+          <div class="cv-sec"><h4>Stack</h4><div class="cv-tags-wrap"><span>Wazuh</span><span>SOC</span><span>Pentest</span><span>Terraform</span><span>Ansible</span><span>Vagrant</span><span>AWS</span><span>Linux</span><span>Python</span><span>Kali</span></div></div>
+          <div class="cv-sec"><h4>Projets</h4><div class="cv-it"><strong>SOC hybride DevSecOps</strong> — Vagrant, Ansible, Wazuh</div><div class="cv-it"><strong>Infrastructure AWS segmentée</strong> — Terraform</div><div class="cv-it"><strong>SOC + Zero Trust</strong> </div><div class="cv-it"><strong>Saidoxx</strong> — Contenu technique en cybersécurité</div></div>
+        </div>
+        <div class="cv-dl-cta"><a href="CV SAID SANGARE.pdf" download class="btn-primary">Télécharger le CV complet</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="modal-win glass-modal" id="modal-certs">
+    <div class="modal-bar glass-bar">
+      <div class="traffic-lights"><span class="tl tl-red" onclick="App.closeModal()"></span><span class="tl tl-yellow"></span><span class="tl tl-green"></span></div>
+      <span class="mono" style="font-size:13px;color:var(--muted)">Certifications — Saidoxx</span>
+    </div>
+    <div class="modal-body">
+      <div class="certs-list">
+        <div class="cert-card glass-cert">
+          <div class="cl">EC-C</div>
+          <div class="ci"><h3>EC-Council CSA</h3><p>Certified SOC Analyst — Analyse d'incidents, threat hunting, corrélation SIEM, gestion des alertes.</p><span class="cbadge">EC-Council</span></div>
+        </div>
+        <div class="cert-card glass-cert">
+          <div class="cl">CompTIA</div>
+          <div class="ci"><h3>CompTIA Security+</h3><p>Sécurité des systèmes, gestion des menaces, cryptographie et contrôles d'accès.</p><span class="cbadge">CompTIA</span></div>
+        </div>
+        <div class="cert-card glass-cert">
+          <div class="cl">CompTIA</div>
+          <div class="ci"><h3>CompTIA Server+</h3><p>Administration serveur, virtualisation, résilience et dépannage d'infrastructure.</p><span class="cbadge">CompTIA</span></div>
+        </div>
+        <div class="cert-card glass-cert">
+          <div class="cl">Cisco</div>
+          <div class="ci"><h3>Cisco CCNA</h3><p>Architecture TCP/IP, adressage IPv4/IPv6, VLAN, commutation et routage OSPF, sécurité d'entreprise, virtualisation et automatisation réseau.</p><span class="cbadge">Cisco</span></div>
+        </div>
+        <div class="cert-card glass-cert">
+          <div class="cl">SEC</div>
+          <div class="ci"><h3>Sécurité des Systèmes</h3><p>Formations techniques en sécurité des systèmes et des réseaux.</p><span class="cbadge">Formation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Detail -->
+  <div class="modal-win glass-modal proj-detail-modal" id="modal-project">
+    <div class="modal-bar glass-bar">
+      <div class="traffic-lights"><span class="tl tl-red" onclick="App.closeModal()"></span><span class="tl tl-yellow"></span><span class="tl tl-green"></span></div>
+      <span class="mono proj-m-title" id="projMTitle" style="font-size:13px;color:var(--muted)">Projet</span>
+      <a id="projMGH" href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="pill-btn small" style="margin-left:auto">Voir sur GitHub</a>
+    </div>
+    <div class="modal-body proj-m-body" id="projMBody"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
