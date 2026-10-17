@@ -1,5 +1,6 @@
 /**
  * SAIDOXX PORTFOLIO — app.js (Version épurée & pro)
+ * + Adaptation mobile / Android : navigation multi-boutons, bouton Retour, redimensionnement stable
  */
 'use strict';
 
@@ -12,6 +13,8 @@ class ParticleCanvas {
     this.dots = [];
     this.mouse = { x: -1000, y: -1000 };
     this.raf = null;
+    this.lastW = 0;
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.resize();
     this.spawnDots();
     this.bind();
@@ -21,6 +24,7 @@ class ParticleCanvas {
   resize() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
+    this.lastW = window.innerWidth;
   }
 
   spawnDots() {
@@ -35,13 +39,25 @@ class ParticleCanvas {
   }
 
   bind() {
-    window.addEventListener('resize', () => { this.resize(); this.spawnDots(); });
+    window.addEventListener('resize', () => {
+      // Sur mobile, la barre d'adresse qui se masque déclenche des resize verticaux : on ne régénère que si la largeur change
+      const widthChanged = window.innerWidth !== this.lastW;
+      this.resize();
+      if (widthChanged) this.spawnDots();
+      if (this.reduce) this.draw();
+    });
     window.addEventListener('mousemove', e => { this.mouse.x = e.clientX; this.mouse.y = e.clientY; });
+    window.addEventListener('touchmove', e => {
+      const t = e.touches && e.touches[0];
+      if (t) { this.mouse.x = t.clientX; this.mouse.y = t.clientY; }
+    }, { passive: true });
+    window.addEventListener('touchend', () => { this.mouse.x = -1000; this.mouse.y = -1000; }, { passive: true });
   }
 
   loop() {
+    if (this.reduce) { this.draw(); return; }
     this.raf = requestAnimationFrame(() => this.loop());
-    this.draw();
+    if (!document.hidden) this.draw();
   }
 
   draw() {
@@ -126,7 +142,7 @@ class TypingEffect {
   destroy() { clearTimeout(this.timer); }
 }
 
-/* 3. ROUTER (Sans vie perso) */
+/* 3. ROUTER (Sans vie perso) — compatible sidebar + barre mobile + bouton Retour Android */
 class Router {
   constructor() {
     this.pages = {};
@@ -140,23 +156,33 @@ class Router {
     });
     document.querySelectorAll('.nav-item').forEach(btn => {
       const t = btn.dataset.page;
-      if (t) { this.navs[t] = btn; btn.addEventListener('click', () => this.go(t)); }
+      if (t) {
+        (this.navs[t] = this.navs[t] || []).push(btn);
+        btn.addEventListener('click', () => this.go(t));
+      }
     });
-    this._activate('home');
+    const hash = location.hash.slice(1);
+    const start = this.pages[hash] ? hash : 'home';
+    this._activate(start);
+    this._title(start);
+    try { history.replaceState({ page: start }, '', '#' + start); } catch { /* ignore */ }
   }
-  go(id) {
+  go(id, fromPop = false) {
     if (!this.pages[id] || id === this.curr) return;
     const out = this.pages[this.curr];
     if (out) { out.classList.remove('active'); out.classList.add('exit'); setTimeout(() => out.classList.remove('exit'), 300); }
     setTimeout(() => this._activate(id), 20);
     this._title(id);
+    if (!fromPop) {
+      try { history.pushState({ page: id }, '', '#' + id); } catch { /* ignore */ }
+    }
   }
   _activate(id) {
     if (!this.pages[id]) return;
     Object.values(this.pages).forEach(p => p.classList.remove('active', 'exit'));
-    Object.values(this.navs).forEach(n => n.classList.remove('active'));
+    Object.values(this.navs).forEach(list => list.forEach(n => n.classList.remove('active')));
     this.pages[id].classList.add('active');
-    if (this.navs[id]) this.navs[id].classList.add('active');
+    (this.navs[id] || []).forEach(n => n.classList.add('active'));
     this.pages[id].scrollTop = 0;
     this.curr = id;
   }
@@ -188,17 +214,24 @@ class ModalMgr {
   open(id) {
     if (!this.wins[id]) return;
     if (this.curr) this._hide(this.curr);
+    else {
+      // Une entrée d'historique pour que le bouton Retour Android ferme la fenêtre
+      try { history.pushState({ modal: id }, ''); } catch { /* ignore */ }
+    }
     this.curr = id;
     this.overlay.classList.add('open');
     setTimeout(() => this.wins[id].classList.add('visible'), 50);
     document.body.style.overflow = 'hidden';
   }
-  close() {
+  close(fromPop = false) {
     if (!this.curr) return;
     this._hide(this.curr);
     this.overlay.classList.remove('open');
     this.curr = null;
     document.body.style.overflow = '';
+    if (!fromPop && history.state && history.state.modal) {
+      try { history.back(); } catch { /* ignore */ }
+    }
   }
   _hide(id) { if (this.wins[id]) this.wins[id].classList.remove('visible'); }
 }
@@ -327,6 +360,8 @@ function buildProjectModal(pid) {
         ${conclusion}
       </div>
     </div>`;
+  const body = document.getElementById('projMBody');
+  if (body) body.scrollTop = 0;
 }
 
 /* 6. FORMULAIRE (Formspree) */
@@ -417,6 +452,13 @@ const App = (() => {
       };
       card.addEventListener('click', open);
       card.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target === card) open(); });
+    });
+
+    // Bouton Retour d'Android / du navigateur : ferme la fenêtre ouverte, sinon revient à la page précédente
+    window.addEventListener('popstate', e => {
+      if (modals.curr) { modals.close(true); return; }
+      const id = (e.state && e.state.page) || location.hash.slice(1) || 'home';
+      router.go(id, true);
     });
   }
 
