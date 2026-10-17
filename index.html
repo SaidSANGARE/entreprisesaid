@@ -2,7 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#E8EEF5" />
+  <meta name="color-scheme" content="light" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>Saidoxx — Cybersécurité & DevSecOps · Abidjan</title>
   <meta name="description" content="Portfolio de Sangare Said — Cybersécurité, SOC, Pentest, Réseaux, Cloud et DevSecOps. Abidjan, Côte d'Ivoire." />
   <link rel="stylesheet" href="style.css" />
@@ -417,7 +420,7 @@
                 <h3>Envoyer un message</h3>
                 <form id="contactForm" action="https://formspree.io/f/xdklwaol" method="POST" novalidate>
                   <div class="fg"><label for="cf-name">Nom complet</label><input id="cf-name" type="text" name="name" placeholder="Votre nom" autocomplete="name" required /></div>
-                  <div class="fg"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" placeholder="votre@email.com" autocomplete="email" required /></div>
+                  <div class="fg"><label for="cf-email">Email</label><input id="cf-email" type="email" name="email" placeholder="votre@email.com" autocomplete="email" inputmode="email" required /></div>
                   <div class="fg"><label for="cf-subject">Sujet</label><input id="cf-subject" type="text" name="_subject" placeholder="Objet de votre demande" /></div>
                   <div class="fg"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" placeholder="Votre message..." required minlength="10"></textarea></div>
                   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
@@ -453,6 +456,15 @@
 
       </div><!-- /pages-wrap -->
     </div><!-- /window-body -->
+
+    <!-- NAVIGATION MOBILE (visible uniquement sur téléphone / tablette) -->
+    <nav class="mobile-nav" aria-label="Navigation principale">
+      <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span><span>Accueil</span></button>
+      <button class="nav-item" data-page="about"><span class="nav-icon">◎</span><span>À propos</span></button>
+      <button class="nav-item" data-page="skills"><span class="nav-icon">◈</span><span>Compét.</span></button>
+      <button class="nav-item" data-page="projects"><span class="nav-icon">◆</span><span>Projets</span></button>
+      <button class="nav-item" data-page="contact"><span class="nav-icon">@</span><span>Contact</span></button>
+    </nav>
   </div><!-- /app-window -->
 </div><!-- /desktop -->
 
@@ -465,6 +477,7 @@
       <div class="traffic-lights"><span class="tl tl-red" onclick="App.closeModal()"></span><span class="tl tl-yellow"></span><span class="tl tl-green"></span></div>
       <span class="mono" style="font-size:13px;color:var(--muted)">CV — SANGARE SAID</span>
       <a href="CV SAID SANGARE.pdf" download class="pill-btn small" style="margin-left:auto">Télécharger PDF</a>
+      <button class="modal-close" onclick="App.closeModal()" aria-label="Fermer">✕</button>
     </div>
     <div class="modal-body">
       <div class="cv-wrap">
@@ -507,6 +520,7 @@
     <div class="modal-bar glass-bar">
       <div class="traffic-lights"><span class="tl tl-red" onclick="App.closeModal()"></span><span class="tl tl-yellow"></span><span class="tl tl-green"></span></div>
       <span class="mono" style="font-size:13px;color:var(--muted)">Certifications — Saidoxx</span>
+      <button class="modal-close" onclick="App.closeModal()" aria-label="Fermer" style="margin-left:auto">✕</button>
     </div>
     <div class="modal-body">
       <div class="certs-list">
@@ -540,6 +554,7 @@
       <div class="traffic-lights"><span class="tl tl-red" onclick="App.closeModal()"></span><span class="tl tl-yellow"></span><span class="tl tl-green"></span></div>
       <span class="mono proj-m-title" id="projMTitle" style="font-size:13px;color:var(--muted)">Projet</span>
       <a id="projMGH" href="https://github.com/SaidSANGARE" target="_blank" rel="noopener noreferrer" class="pill-btn small" style="margin-left:auto">Voir sur GitHub</a>
+      <button class="modal-close" onclick="App.closeModal()" aria-label="Fermer">✕</button>
     </div>
     <div class="modal-body proj-m-body" id="projMBody"></div>
   </div>
